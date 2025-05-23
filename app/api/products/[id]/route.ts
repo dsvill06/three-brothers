@@ -3,15 +3,9 @@ import { db } from '@/lib/db/drizzle';
 import { inventoryItems } from '@/lib/db/schema';
 import { eq } from 'drizzle-orm';
 
-type RouteContext = {
-  params: {
-    id: string;
-  };
-};
-
 export async function GET(
   request: Request,
-  { params }: RouteContext
+  { params }: { params: { id: string } }
 ) {
   try {
     const [product] = await db
@@ -38,7 +32,7 @@ export async function GET(
 
 export async function PUT(
   request: Request,
-  { params }: RouteContext
+  { params }: { params: { id: string } }
 ) {
   try {
     const data = await request.json();
@@ -67,7 +61,7 @@ export async function PUT(
 
 export async function DELETE(
   request: Request,
-  { params }: RouteContext
+  { params }: { params: { id: string } }
 ) {
   try {
     const [product] = await db
