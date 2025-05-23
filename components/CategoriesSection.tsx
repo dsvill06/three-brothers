@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'motion/react';
+import { ShoppingCart, ShoppingCartIcon } from 'lucide-react';
 
 interface Category {
   name: string;
@@ -14,37 +15,37 @@ interface Category {
 const categories: Category[] = [
   { 
     name: 'Fresh Produce', 
-    image: '/images/produce.png', 
+    image: '/images/produce.jpg', 
     href: '/categories/produce',
     description: 'Farm-fresh fruits and vegetables'
   },
   { 
     name: 'Dairy & Eggs', 
-    image: '/images/dairy.png', 
+    image: '/images/dairy.jpg', 
     href: '/categories/dairy',
     description: 'Fresh dairy products and farm eggs'
   },
   { 
     name: 'Meat & Seafood', 
-    image: '/images/meat.png', 
+    image: '/images/meat.jpg', 
     href: '/categories/meat',
     description: 'Premium cuts and fresh seafood'
   },
   { 
     name: 'Bakery', 
-    image: '/images/bakery.png', 
+    image: '/images/bakery.jpg', 
     href: '/categories/bakery',
     description: 'Artisanal breads and pastries'
   },
   { 
     name: 'Pantry', 
-    image: '/images/pantry.png', 
+    image: '/images/pantry.jpg', 
     href: '/categories/pantry',
     description: 'Essential dry goods and staples'
   },
   { 
     name: 'Beverages', 
-    image: '/images/beverages.png', 
+    image: '/images/beverages.jpg', 
     href: '/categories/beverages',
     description: 'Refreshing drinks and juices'
   },
@@ -53,7 +54,11 @@ const categories: Category[] = [
 export function CategoriesSection() {
   return (
     <section className="py-16 px-4 max-w-7xl mx-auto">
-      <h2 className="text-3xl font-bold text-center mb-12">Shop by Category</h2>
+        <h2 className="text-3xl text-secondary font-bold text-center mb-12 flex flex-row gap-5 place-items-center justify-self-center">
+        <ShoppingCartIcon className='w-10 h-10'/>
+
+          Encuentra Nuestros Departamentos
+          </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {categories.map((category) => (
           <Link 

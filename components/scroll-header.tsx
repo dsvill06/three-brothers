@@ -19,50 +19,52 @@ import {
  
 const components: { title: string; href: string; description: string }[] = [
   {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
+    title: "Produce",
+    href: "/categories/produce",
     description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
+      "Fresh fruits, vegetables, and organic produce section.",
   },
   {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
+    title: "Dairy & Eggs",
+    href: "/categories/dairy",
     description:
-      "For sighted users to preview content available behind a link.",
+      "Milk, cheese, yogurt, and fresh eggs.",
   },
   {
-    title: "Progress",
-    href: "/docs/primitives/progress",
+    title: "Meat & Seafood",
+    href: "/categories/meat",
     description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+      "Fresh meat, poultry, seafood, and deli items.",
   },
   {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
+    title: "Bakery",
+    href: "/categories/bakery",
+    description: "Fresh bread, pastries, and custom cakes.",
   },
   {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
+    title: "Frozen Foods",
+    href: "/categories/frozen",
     description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+      "Frozen meals, ice cream, and frozen vegetables.",
   },
   {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
+    title: "Pantry",
+    href: "/categories/pantry",
     description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+      "Canned goods, pasta, rice, and dry goods.",
   },
 ]
 
 export function ScrollHeader() {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      setIsVisible(!(scrollPosition > 100)); // Show header after scrolling 100px
+      setIsVisible(scrollPosition <= 100);
     };
+
+    handleScroll();
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -70,17 +72,17 @@ export function ScrollHeader() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: -20 }}
+      initial={{ opacity: 1, y: 0 }}
       animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
       transition={{ duration: 0.3 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-[#548000] backdrop-blur-sm  dark:bg-gray-950/80 mt-32"
+      className="fixed top-0 left-0 right-0 z-50 bg-primary backdrop-blur-sm dark:bg-gray-950/80 mt-32"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="flex items-center justify-center h-16">
         <NavigationMenu>
       <NavigationMenuList>
-        <NavigationMenuItem >
-          <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
+        <NavigationMenuItem className="border-r-2 border-white text-white">
+          <NavigationMenuTrigger>Shop</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
@@ -90,29 +92,28 @@ export function ScrollHeader() {
                     href="/"
                   >
                     <div className="mb-2 mt-4 text-lg font-medium">
-                      shadcn/ui
+                      Three Brothers Market
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
-                      Beautifully designed components built with Radix UI and
-                      Tailwind CSS.
+                      Your neighborhood grocery store with fresh, quality products and exceptional service.
                     </p>
                   </a>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/docs" title="Introduction">
-                Re-usable components built using Radix UI and Tailwind CSS.
+              <ListItem href="/weekly-specials" title="Weekly Specials">
+                Check out our latest deals and promotions.
               </ListItem>
-              <ListItem href="/docs/installation" title="Installation">
-                How to install dependencies and structure your app.
+              <ListItem href="/new-arrivals" title="New Arrivals">
+                Discover our newest products and seasonal items.
               </ListItem>
-              <ListItem href="/docs/primitives/typography" title="Typography">
-                Styles for headings, paragraphs, lists...etc
+              <ListItem href="/recipes" title="Recipes & Ideas">
+                Get inspired with our recipe collection and meal ideas.
               </ListItem>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+        <NavigationMenuItem className="border-r-2 border-white text-white">
+          <NavigationMenuTrigger>Departments</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
               {components.map((component) => (
@@ -127,10 +128,10 @@ export function ScrollHeader() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Documentation
+        <NavigationMenuItem className="border-r-2 border-white text-white !rounded-none">
+          <Link href="/services" legacyBehavior passHref>
+            <NavigationMenuLink className={`${navigationMenuTriggerStyle()} !rounded-none`}>
+              Services
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>

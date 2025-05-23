@@ -11,7 +11,6 @@ interface Footer2Props {
     url: string;
     src: string;
     alt: string;
-    title: string;
   };
   tagline?: string;
   menuItems?: MenuItem[];
@@ -24,56 +23,63 @@ interface Footer2Props {
 
 const Footer2 = ({
   logo = {
-    src: "https://shadcnblocks.com/images/block/block-1.svg",
-    alt: "blocks for shadcn/ui",
-    title: "Shadcnblocks.com",
-    url: "https://www.shadcnblocks.com",
+    src: "/images/hermanos_logo.png",
+    alt: "Three Brothers Supermarket",
+    url: "/",
   },
-  tagline = "Components made easy.",
+  tagline = "4020 Capital Blvd, Raleigh, NC 27604",
   menuItems = [
     {
-      title: "Product",
+      title: "Shop",
       links: [
-        { text: "Overview", url: "#" },
-        { text: "Pricing", url: "#" },
-        { text: "Marketplace", url: "#" },
-        { text: "Features", url: "#" },
-        { text: "Integrations", url: "#" },
-        { text: "Pricing", url: "#" },
+        { text: "Fresh Produce", url: "/shop/produce" },
+        { text: "Meat & Seafood", url: "/shop/meat" },
+        { text: "Dairy & Eggs", url: "/shop/dairy" },
+        { text: "Bakery", url: "/shop/bakery" },
+        { text: "Frozen Foods", url: "/shop/frozen" },
+        { text: "International Foods", url: "/shop/international" },
       ],
     },
     {
-      title: "Company",
+      title: "Services",
       links: [
-        { text: "About", url: "#" },
-        { text: "Team", url: "#" },
-        { text: "Blog", url: "#" },
-        { text: "Careers", url: "#" },
-        { text: "Contact", url: "#" },
-        { text: "Privacy", url: "#" },
+        { text: "Weekly Ad", url: "/weekly-ad" },
+        { text: "Catering", url: "/catering" },
+        { text: "Gift Cards", url: "/gift-cards" },
+        { text: "Delivery", url: "/delivery" },
+        { text: "Curbside Pickup", url: "/pickup" },
+        { text: "Party Platters", url: "/party-platters" },
       ],
     },
     {
-      title: "Resources",
+      title: "About Us",
       links: [
-        { text: "Help", url: "#" },
-        { text: "Sales", url: "#" },
-        { text: "Advertise", url: "#" },
+        { text: "Our Story", url: "/about" },
+        { text: "Locations", url: "/locations" },
+        { text: "Careers", url: "/careers" },
+        { text: "Community", url: "/community" },
+        { text: "Contact Us", url: "/contact" },
+        { text: "FAQ", url: "/faq" },
       ],
     },
     {
-      title: "Social",
+      title: "Connect",
       links: [
-        { text: "Twitter", url: "#" },
-        { text: "Instagram", url: "#" },
-        { text: "LinkedIn", url: "#" },
+        { text: "Facebook", url: "https://facebook.com" },
+        { text: "Instagram", url: "https://instagram.com" },
+        { text: "Twitter", url: "https://twitter.com" },
+        { text: "Newsletter", url: "/newsletter" },
+        { text: "Customer Service", url: "/customer-service" },
+        { text: "Feedback", url: "/feedback" },
       ],
     },
   ],
-  copyright = "© 2024 Shadcnblocks.com. All rights reserved.",
+  copyright = "© 2024 Three Brothers Supermarket. All rights reserved.",
   bottomLinks = [
-    { text: "Terms and Conditions", url: "#" },
-    { text: "Privacy Policy", url: "#" },
+    { text: "Privacy Policy", url: "/privacy" },
+    { text: "Terms of Service", url: "/terms" },
+    { text: "Accessibility", url: "/accessibility" },
+    { text: "SNAP/EBT", url: "/snap-ebt" },
   ],
 }: Footer2Props) => {
   return (
@@ -81,19 +87,20 @@ const Footer2 = ({
       <div className="container">
         <footer className="justify-center place-items-center">
           <div className="grid grid-cols-2 gap-8 lg:grid-cols-6">
-            <div className="col-span-2 mb-8 lg:mb-0">
+            <div className="col-span-2 mb-8 lg:mb-0 " >
               <div className="flex items-center gap-2 lg:justify-start">
-                <a href="https://shadcnblocks.com">
+                <a href={logo.url}>
                   <img
                     src={logo.src}
                     alt={logo.alt}
-                    title={logo.title}
-                    className="h-10"
+                    className="h-14 bg-primary p-2 rounded-lg"
                   />
                 </a>
-                <p className="text-xl font-semibold">{logo.title}</p>
               </div>
               <p className="mt-4 font-bold">{tagline}</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Open Daily: 7:00 AM - 10:00 PM
+              </p>
             </div>
             {menuItems.map((section, sectionIdx) => (
               <div key={sectionIdx}>

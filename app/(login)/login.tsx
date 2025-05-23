@@ -47,7 +47,7 @@ export function Login() {
   if (isLoading) {
     return (
       <div className="min-h-[100dvh] flex items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-[#548000]" />
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
       </div>
     );
   }
@@ -82,7 +82,7 @@ export function Login() {
                 defaultValue={state.email}
                 required
                 maxLength={50}
-                className="appearance-none rounded-full relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[#548000] focus:border-[#548000] focus:z-10 sm:text-sm"
+                className="appearance-none rounded-full relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm"
                 placeholder="Enter your email"
               />
             </div>
@@ -105,20 +105,20 @@ export function Login() {
                 required
                 minLength={8}
                 maxLength={100}
-                className="appearance-none rounded-full relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[#548000] focus:ring-[#548000] focus:z-10 sm:text-sm"
+                className="appearance-none rounded-full relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-primary focus:ring-primary focus:z-10 sm:text-sm"
                 placeholder="Enter your password"
               />
             </div>
           </div>
 
           {state?.error && (
-            <div className="text-[#548000] text-sm">{state.error}</div>
+            <div className="text-primary text-sm">{state.error}</div>
           )}
 
           <div>
             <Button
               type="submit"
-              className="w-full flex justify-center items-center py-2 px-4 border border-transparent rounded-full shadow-sm text-sm font-medium text-white bg-[#548000] hover:bg-[#248000] "
+              className="w-full flex justify-center items-center py-2 px-4 border border-transparent rounded-full shadow-sm text-sm font-medium text-white bg-primary hover:bg-[#248000] "
               disabled={pending}
             >
               {pending ? (

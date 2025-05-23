@@ -27,7 +27,7 @@ export function HeroSection() {
           <p className="text-xl mb-8">Your one-stop shop for quality groceries and household essentials</p>
           <Link 
             href="/shop"
-            className="bg-[#548000] hover:bg-green-700 text-white px-8 py-3 rounded-full text-lg font-semibold transition-colors"
+            className="bg-primary hover:bg-green-700 text-white px-8 py-3 rounded-full text-lg font-semibold transition-colors"
           >
             Shop Now
           </Link>

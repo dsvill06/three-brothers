@@ -5,13 +5,13 @@ import { eq } from 'drizzle-orm';
 
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
   try {
     const [product] = await db
       .select()
       .from(inventoryItems)
-      .where(eq(inventoryItems.id, parseInt(params.id)));
+      .where(eq(inventoryItems.id, parseInt(context.params.id)));
     
     if (!product) {
       return NextResponse.json(
@@ -32,14 +32,14 @@ export async function GET(
 
 export async function PUT(
   request: Request,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
   try {
     const data = await request.json();
     const [product] = await db
       .update(inventoryItems)
       .set(data)
-      .where(eq(inventoryItems.id, parseInt(params.id)))
+      .where(eq(inventoryItems.id, parseInt(context.params.id)))
       .returning();
 
     if (!product) {
@@ -61,12 +61,12 @@ export async function PUT(
 
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
   try {
     const [product] = await db
       .delete(inventoryItems)
-      .where(eq(inventoryItems.id, parseInt(params.id)))
+      .where(eq(inventoryItems.id, parseInt(context.params.id)))
       .returning();
 
     if (!product) {
