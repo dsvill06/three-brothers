@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { TeamDataWithMembers, User } from '@/lib/db/schema';
-import { getTeamForUser, getUser } from '@/lib/db/queries';
+import {  User } from '@/lib/db/schema';
+import { getUser } from '@/lib/db/queries';
 import { redirect } from 'next/navigation';
 
 export type ActionState = {
@@ -55,7 +55,6 @@ export function validatedActionWithUser<S extends z.ZodType<any, any>, T>(
 
 type ActionWithTeamFunction<T> = (
   formData: FormData,
-  team: TeamDataWithMembers
 ) => Promise<T>;
 
 export function withTeam<T>(action: ActionWithTeamFunction<T>) {
@@ -65,11 +64,8 @@ export function withTeam<T>(action: ActionWithTeamFunction<T>) {
       redirect('/sign-in');
     }
 
-    const team = await getTeamForUser(user.id);
-    if (!team) {
-      throw new Error('Team not found');
-    }
+    
 
-    return action(formData, team);
+    return action(formData);
   };
 }

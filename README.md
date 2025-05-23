@@ -1,26 +1,56 @@
 # Next.js SaaS Starter
 
-This is a starter template for building a SaaS application using **Next.js** with support for authentication, Stripe integration for payments, and a dashboard for logged-in users.
+This is a starter template for building a SaaS application using **Next.js** with support for authentication and a dashboard for logged-in users.
 
 **Demo: [https://next-saas-start.vercel.app/](https://next-saas-start.vercel.app/)**
 
 ## Features
 
-- Marketing landing page (`/`) with animated Terminal element
-- Pricing page (`/pricing`) which connects to Stripe Checkout
-- Dashboard pages with CRUD operations on users/teams
-- Basic RBAC with Owner and Member roles
-- Subscription management with Stripe Customer Portal
-- Email/password authentication with JWTs stored to cookies
-- Global middleware to protect logged-in routes
-- Local middleware to protect Server Actions or validate Zod schemas
-- Activity logging system for any user events
+- Authentication with email and password
+- Team management with role-based access control
+- Dashboard for logged-in users
+- Activity logging
+- Team member invitations
+- User profile management
 
 ## Tech Stack
 
 - **Framework**: [Next.js](https://nextjs.org/)
-- **Database**: [Postgres](https://www.postgresql.org/)
-- **ORM**: [Drizzle](https://orm.drizzle.team/)
-- **Payments**: [Stripe](https://stripe.com/)
-- **UI Library**: [shadcn/ui](https://ui.shadcn.com/)
+- **Database**: [PostgreSQL](https://www.postgresql.org/)
+- **ORM**: [Drizzle ORM](https://orm.drizzle.team/)
+- **Authentication**: Custom JWT-based authentication
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **UI Components**: [Radix UI](https://www.radix-ui.com/)
+- **Form Handling**: [React Hook Form](https://react-hook-form.com/)
+- **Validation**: [Zod](https://zod.dev/)
+
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies with `npm install`
+3. Set up your database with `npm run db:setup`
+4. Run the development server with `npm run dev`
+
+## Environment Variables
+
+Create a `.env` file in the root directory with the following variables:
+
+```env
+POSTGRES_URL=your_postgres_url
+AUTH_SECRET=your_auth_secret
+BASE_URL=http://localhost:3000
+```
+
+## Database Setup
+
+The application uses Drizzle ORM for database management. You can:
+
+- Generate migrations: `npm run db:generate`
+- Apply migrations: `npm run db:migrate`
+- View database: `npm run db:studio`
+- Seed database: `npm run db:seed`
+
+## License
+
+MIT
 

@@ -3,11 +3,8 @@
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { customerPortalAction } from '@/lib/payments/actions';
 import { useActionState } from 'react';
-import { TeamDataWithMembers, User } from '@/lib/db/schema';
-import { removeTeamMember } from '@/app/(login)/actions';
-import { InviteTeamMember } from './team/invite-team';
+import {  User } from '@/lib/db/schema';
 import { useRouter } from 'next/navigation';
 import { 
   Briefcase, 
@@ -15,7 +12,8 @@ import {
   Users, 
   Settings, 
   BarChart3,
-  Calendar
+  Calendar,
+  ShoppingBasket
 } from 'lucide-react';
 
 type ActionState = {
@@ -23,17 +21,13 @@ type ActionState = {
   success?: string;
 };
 
-export function Home({ teamData, user }: { teamData: TeamDataWithMembers , user: any }) {
+export function Home({  user }: { user: any }) {
   const router = useRouter();
-  const [removeState, removeAction, isRemovePending] = useActionState<
-    ActionState,
-    FormData
-  >(removeTeamMember, { error: '', success: '' });
+  
 
   const getUserDisplayName = (user: Pick<User, 'id' | 'fullName' | 'email'>) => {
     return user?.fullName || user?.email || 'Unknown User';
   };
-  const user_id = teamData.teamMembers[0].id;
 
   // const sampleProjects = [
   //   {
@@ -80,10 +74,10 @@ export function Home({ teamData, user }: { teamData: TeamDataWithMembers , user:
 
   const dashboardItems = [
     {
-      title: 'Projects',
-      description: 'Manage your active projects and track their progress',
-      icon: Briefcase,
-      href: '/dashboard/projects',
+      title: 'Products',
+      description: 'Manage your products and inventory',
+      icon: ShoppingBasket,
+      href: '/dashboard/products',
       color: 'text-blue-500'
     },
     {

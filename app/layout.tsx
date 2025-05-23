@@ -4,10 +4,20 @@ import { Manrope } from 'next/font/google';
 import { UserProvider } from '@/lib/auth';
 import { getUser } from '@/lib/db/queries';
 import { ThemeProvider } from 'next-themes';
+import Link from 'next/link';
+import { NavItem } from '@/components/nav-links';
+import { HomeIcon, LineChart, Package, Package2, PanelLeft, Settings, ShoppingCart, Users2, User } from 'lucide-react';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Button } from '@/components/ui/button';
+import { ModeToggle } from "@/components/ui/mode-toggle";
+import { Footer2 } from '@/components/footer2';
+import { ScrollHeader } from '@/components/scroll-header';
+import { Providers } from './providers';
 
 export const metadata: Metadata = {
-  title: 'Next.js SaaS Starter',
-  description: 'Get started quickly with Next.js, Postgres, and Stripe.',
+  title: 'Supermarket Inventory Management',
+  description: 'Manage your supermarket inventory efficiently with our comprehensive inventory management system.',
 };
 
 export const viewport: Viewport = {
@@ -29,16 +39,21 @@ export default function RootLayout({
       className={` dark:bg-gray-950 text-black dark:text-white ${manrope.className}`}
       suppressHydrationWarning
     >
-      <body className="min-h-[100dvh] bg-gray-50 dark:bg-black text-black dark:text-white">
-        <UserProvider userPromise={userPromise}> <ThemeProvider
+      <body>
+        <Providers>
+          <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
-            {children}
-          </ThemeProvider></UserProvider>
+            <UserProvider userPromise={userPromise}>
+              {children}
+            </UserProvider>
+          </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );
 }
+

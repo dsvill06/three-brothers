@@ -20,10 +20,11 @@ export default function DashboardLayout({
     { href: '/dashboard/general', icon: Settings, label: 'General' },
     { href: '/dashboard/activity', icon: Activity, label: 'Activity' },
     { href: '/dashboard/security', icon: Shield, label: 'Security' },
+    
   ];
 
   return (
-    <div className="flex flex-col min-h-[calc(100dvh-68px)]  mx-auto w-full">
+    <div className="flex flex-col h-screen  mx-auto w-full">
       {/* Mobile header */}
       <div className="lg:hidden flex items-center justify-between bg-white border-b border-gray-200 dark:border-[#282828] p-4">
         <div className="flex items-center">
