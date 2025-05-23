@@ -42,14 +42,15 @@ export async function GET(
 
 export async function PUT(
   request: Request,
-  { params }: { params: { id: string } }
+  {params}: {params : Promise<{ id: string }>}
 ) {
   try {
+    const {id} = await params;
     const data = await request.json();
     const [product] = await db
       .update(inventoryItems)
       .set(data)
-      .where(eq(inventoryItems.id, parseInt(params.id)))
+      .where(eq(inventoryItems.id, parseInt(id)))
       .returning();
 
     if (!product) {
@@ -71,12 +72,13 @@ export async function PUT(
 
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  {params}: {params : Promise<{ id: string }>}
 ) {
   try {
+    const {id} = await params;
     const [product] = await db
       .delete(inventoryItems)
-      .where(eq(inventoryItems.id, parseInt(params.id)))
+      .where(eq(inventoryItems.id, parseInt(id)))
       .returning();
 
     if (!product) {
