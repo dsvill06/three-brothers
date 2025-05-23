@@ -12,7 +12,6 @@ type Props = {
 };
 
 export async function GET(
-  req: NextApiRequest,
   { params }: { params: { id: string } }
 ) {
   const id = parseInt(params.id, 10);
