@@ -12,8 +12,14 @@ type Props = {
 };
 
 export async function GET(
-  { params }: { params: { id: string } }
+  req: NextRequest,
+  context: {
+    params: {
+      id: string;
+    };
+  }
 ) {
+  const { params } = await context;
   const id = parseInt(params.id, 10);
   if (isNaN(id)) {
     return NextResponse.json(
