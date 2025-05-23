@@ -10,10 +10,9 @@ const addInventoryItemSchema = z.object({
   name: z.string().min(1, 'Name is required'),
   description: z.string().optional(),
   categoryId: z.string().transform((val) => parseInt(val)),
-  price: z.string().transform((val) => parseFloat(val)),
+  price: z.string().transform((val) => val),
   stock: z.string().transform((val) => parseInt(val)),
   unit: z.string().min(1, 'Unit is required'),
-  reorderLevel: z.string().transform((val) => parseInt(val)),
 });
 
 export const addInventoryItem = validatedActionWithUser(
@@ -26,7 +25,6 @@ export const addInventoryItem = validatedActionWithUser(
       price: data.price,
       stock: data.stock,
       unit: data.unit,
-      reorderLevel: data.reorderLevel,
     };
 
     try {
