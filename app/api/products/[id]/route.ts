@@ -6,8 +6,8 @@ import { eq } from 'drizzle-orm';
 
 export async function GET(
   request: Request,
-  context:{
-    params: { id: number};
+  context: {
+    params: { id: string };
   }
 ) {
   try {
@@ -15,7 +15,7 @@ export async function GET(
     const [product] = await db
       .select()
       .from(inventoryItems)
-      .where(eq(inventoryItems.id, params.id));
+      .where(eq(inventoryItems.id, parseInt(params.id)));
     
     if (!product) {
       return NextResponse.json(
