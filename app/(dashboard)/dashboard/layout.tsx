@@ -18,7 +18,6 @@ export default function DashboardLayout({
   const navItems = [
     { href: '/', icon: ArrowLeft, label: 'Back to Website' },
     { href: '/dashboard', icon: Home, label: 'Home' },
-    { href: '/dashboard/general', icon: Settings, label: 'General' },
   ];
 
   

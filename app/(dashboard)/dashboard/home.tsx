@@ -80,41 +80,41 @@ export function Home({  user }: { user: any }) {
       href: '/dashboard/products',
       color: 'text-blue-500'
     },
-    {
-      title: 'Invoices',
-      description: 'View and manage client invoices and payments',
-      icon: FileText,
-      href: '/dashboard/invoices',
-      color: 'text-green-500'
-    },
-    {
-      title: 'Contracts',
-      description: 'Write custome contracts for your clients',
-      icon: FileText,
-      href: '/dashboard/contracts',
-      color: 'text-purple-500'
-    },
-    {
-      title: 'Calendar',
-      description: 'View project timelines and deadlines',
-      icon: Calendar,
-      href: '/dashboard/calendar',
-      color: 'text-orange-500'
-    },
-    {
-      title: 'Analytics',
-      description: 'Track project metrics and performance',
-      icon: BarChart3,
-      href: '/dashboard/analytics',
-      color: 'text-red-500'
-    },
-    {
-      title: 'Settings',
-      description: 'Configure your workspace settings',
-      icon: Settings,
-      href: '/dashboard/settings',
-      color: 'text-gray-500'
-    }
+    // {
+    //   title: 'Invoices',
+    //   description: 'View and manage client invoices and payments',
+    //   icon: FileText,
+    //   href: '/dashboard/invoices',
+    //   color: 'text-green-500'
+    // },
+    // {
+    //   title: 'Contracts',
+    //   description: 'Write custome contracts for your clients',
+    //   icon: FileText,
+    //   href: '/dashboard/contracts',
+    //   color: 'text-purple-500'
+    // },
+    // {
+    //   title: 'Calendar',
+    //   description: 'View project timelines and deadlines',
+    //   icon: Calendar,
+    //   href: '/dashboard/calendar',
+    //   color: 'text-orange-500'
+    // },
+    // {
+    //   title: 'Analytics',
+    //   description: 'Track project metrics and performance',
+    //   icon: BarChart3,
+    //   href: '/dashboard/analytics',
+    //   color: 'text-red-500'
+    // },
+    // {
+    //   title: 'Settings',
+    //   description: 'Configure your workspace settings',
+    //   icon: Settings,
+    //   href: '/dashboard/settings',
+    //   color: 'text-gray-500'
+    // }
   ];
 
   return (
