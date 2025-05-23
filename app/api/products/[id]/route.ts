@@ -1,17 +1,14 @@
 export const runtime = 'nodejs';
-import { NextResponse } from 'next/server';
+import { NextResponse, NextRequest } from 'next/server';
 import { db } from '@/lib/db/drizzle';
 import { inventoryItems } from '@/lib/db/schema';
 import { eq } from 'drizzle-orm';
 
 export async function GET(
-  request: Request,
-  context: {
-    params: { id: string };
-  }
+  request: NextRequest,
+  { params }: { params: { id: string } }
 ) {
   try {
-    const { params } = context;
     const [product] = await db
       .select()
       .from(inventoryItems)
