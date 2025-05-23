@@ -3,6 +3,7 @@ import { NextResponse, NextRequest } from 'next/server';
 import { db } from '@/lib/db/drizzle';
 import { inventoryItems } from '@/lib/db/schema';
 import { eq } from 'drizzle-orm';
+import type { NextApiRequest } from 'next';
 
 type Props = {
   params: {
@@ -11,11 +12,16 @@ type Props = {
 };
 
 export async function GET(
-  request: Request,
-  context: { params: { id: number } }
-
+  req: NextApiRequest,
+  { params }: { params: { id: string } }
 ) {
-  const { id } = context.params;
+  const id = parseInt(params.id, 10);
+  if (isNaN(id)) {
+    return NextResponse.json(
+      { error: 'Invalid ID format' },
+      { status: 400 }
+    );
+  }
 
   try {
     const [product] = await db
