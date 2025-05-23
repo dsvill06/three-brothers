@@ -4,15 +4,21 @@ import { db } from '@/lib/db/drizzle';
 import { inventoryItems } from '@/lib/db/schema';
 import { eq } from 'drizzle-orm';
 
+type Props = {
+  params: {
+    id: string;
+  };
+};
+
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  props: Props
 ) {
   try {
     const [product] = await db
       .select()
       .from(inventoryItems)
-      .where(eq(inventoryItems.id, parseInt(params.id)));
+      .where(eq(inventoryItems.id, parseInt(props.params.id)));
     
     if (!product) {
       return NextResponse.json(
