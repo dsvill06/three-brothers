@@ -11,14 +11,14 @@ type Props = {
 };
 
 export async function GET(
-  request: NextRequest,
-  context: { params: { id: string } }
-): Promise<NextResponse> {
+  request: Request,
+  { params }: { params: { id: string } }
+) {
   try {
     const [product] = await db
       .select()
       .from(inventoryItems)
-      .where(eq(inventoryItems.id, parseInt(context.params.id)));
+      .where(eq(inventoryItems.id, parseInt(params.id)));
     
     if (!product) {
       return NextResponse.json(
