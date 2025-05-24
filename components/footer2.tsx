@@ -83,12 +83,12 @@ const Footer2 = ({
   ],
 }: Footer2Props) => {
   return (
-    <section className="py-32 justify-center place-items-center bg-background">
+    <section className="py-32 justify-center place-items-center bg-background  ">
       <div className="container">
         <footer className="justify-center place-items-center">
           <div className="grid grid-cols-2 gap-8 lg:grid-cols-6">
             <div className="col-span-2 mb-8 lg:mb-0 " >
-              <div className="flex items-center gap-2 lg:justify-start">
+              <div className="flex items-center gap-2 place-self-center md:place-self-start lg:justify-start">
                 <a href={logo.url}>
                   <img
                     src={logo.src}

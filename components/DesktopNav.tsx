@@ -20,7 +20,7 @@ export function DesktopNav() {
   }
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 h-40 overflow-hidden">
+    <div className="fixed top-0 left-0 right-0 z-50 h-40 overflow-hidden block md:visible">
       <motion.div 
         className="absolute inset-0 bg-white/50 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 dark:bg-gray-950/80"
         style={{ y: backgroundY }}
@@ -39,19 +39,19 @@ export function DesktopNav() {
                   <img
                     src={logo.src}
                     alt={logo.alt}
-                    className="h-14 bg-primary p-2 rounded-lg"
+                    className="h-14 bg-primary p-2 rounded-lg object-cover invisible md:visible"
                   />
               </div>
             </Link>
             <div className="flex-1" />
             <div className="flex items-center space-x-2">
-          <Search className="h-4 w-4 text-gray-500" />
-          <Input
-            placeholder="Search inventory..."
-           
-            className="flex-1"
-          />
-        </div>            <div className="flex items-center gap-4">
+              <Search className="h-4 w-4 text-gray-500" />
+              <Input
+                placeholder="Search inventory..."
+                className="flex-1"
+              />
+            </div>
+            <div className="flex items-center gap-4">
               <Link href="/sign-in">
                 <Button variant="ghost" size="icon">
                   <User className="h-5 w-5" />

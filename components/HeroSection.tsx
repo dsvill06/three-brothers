@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export function HeroSection() {
   return (
-    <section className="relative h-screen md:h-[40vh] overflow-hidden mt-24 md:mt-38">
+    <section className="relative h-screen md:h-[40vh] overflow-hidden mt-18 md:mt-16">
       {/* Video Background */}
       <video
         autoPlay
