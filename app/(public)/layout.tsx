@@ -19,9 +19,7 @@ export default function PublicLayout({
       <DesktopNav />
       <ScrollHeader />
       <div className="pt-10">
-        <header className="sticky top-0 z-50 flex items-center  border-b bg-background sm:static  sm:bg-transparent  visible">
           <MobileNav />
-        </header>
         <main className="">
           {children}
         </main>
@@ -39,9 +37,11 @@ function MobileNav() {
   }
 
   return (
-    <div className=" h-20">
+    <div className=" h-20 flex flex-row items-center  w-full bg-white/50 backdrop-blur-sm md:hidden  border-gray-200 dark:border-gray-800 dark:bg-gray-950/80 sticky top-0 z-50   justify-center   sm:static  visible">
+      
       <Sheet >
-        <SheetTrigger asChild>
+        
+        <SheetTrigger asChild className="absolute top-4 left-4">
           <Button size="icon" variant="outline" className="sm:hidden">
             <PanelLeft className="h-5 w-5" />
             <span className="sr-only">Toggle Menu</span>
@@ -63,7 +63,6 @@ function MobileNav() {
                   />
                 </div>
               </Link>
-              <ModeToggle />
             </div>
             
             <div className="flex items-center space-x-2 mb-6">
@@ -108,6 +107,18 @@ function MobileNav() {
           </div>
         </SheetContent>
       </Sheet>
+      <Link
+                href="/"
+                className="flex items-center gap-2 font-semibold place-self-center text-center justify-self-center"
+              >
+                <div className="flex items-center gap-2 place-self-center">
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="h-14 bg-primary p-2 rounded-lg"
+                  />
+                </div>
+              </Link>
     </div>
   );
 } 

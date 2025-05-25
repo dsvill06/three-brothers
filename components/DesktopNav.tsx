@@ -22,7 +22,7 @@ export function DesktopNav() {
   return (
     <div className="fixed top-0 left-0 right-0 z-50 h-40 overflow-hidden block md:visible">
       <motion.div 
-        className="absolute inset-0 bg-white/50 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 dark:bg-gray-950/80"
+        className="absolute inset-0 bg-white backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 dark:bg-gray-950/80"
         style={{ y: backgroundY }}
       />
       <motion.div 

@@ -16,6 +16,8 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
+
+const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
  
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -61,7 +63,7 @@ export function ScrollHeader() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      setIsVisible(scrollPosition <= 100);
+      setIsVisible(isMobile? scrollPosition <=60 :scrollPosition <= 100);
     };
 
     handleScroll();
